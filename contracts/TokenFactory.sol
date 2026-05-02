@@ -38,14 +38,10 @@ Constants {
 
     IHestyAccessControl public ctrHestyControl;     // Hesty Access Control Contract
     IIssuance           public ctrHestyIssuance;    // Hesty Tokens Issuance Logic
-    IReferral           public referralSystemCtr;   // Referral System Contract
 
     uint256 public propertyCounter;         // Number of properties created until now
     uint256 public minInvAmount;            // Minimum amount allowed to invest
-    uint256 public maxNumberOfReferrals;    // Maximum Number of Referrals that a user can have
-    uint256 public maxAmountOfRefRev;       // Maximum Amount of Referral Revenue users can earn
     uint256 public platformFeeBasisPoints;  // Investment Fee charged by Hesty (in Basis Points)
-    uint256 public refFeeBasisPoints;       // Referral Fee charged by referrals (in Basis Points)
     address public treasury;                // Address that will receive Hesty fees revenue
     bool    public initialized;            // Checks if the contract is already initialized
 
@@ -53,7 +49,6 @@ Constants {
     mapping(uint256 => uint256)         public platformFee;             // (Property id => fee amount) The fee earned by the platform on every investment
     mapping(uint256 => uint256)         public ownersPlatformFee;       // The fee earned by the platform on every investment
     mapping(uint256 => uint256)         public propertyOwnerShare;      // The amount reserved to propertyOwner
-    mapping(uint256 => uint256)         public refFee;                  // The referral fee accumulated by each property before completing
     mapping(uint256 => uint256)         public ownersFeeBasisPoints;    // Owners Fee charged by Hesty (in Basis Points) in each project
     mapping(uint256 => bool)            public deadProperty;            // After Canceled can no longer be approved
     mapping(address => bool)            public tokensWhitelist;         // Payment Token whitelist
@@ -63,7 +58,7 @@ Constants {
     mapping(address => mapping(uint256 => uint256)) public rightForTokens;  // Amount of tokens that each user bought
 
     //Events
-    event              InitializeFactory(address referralCtr, address ctrHestyIssuance_);
+    event              InitializeFactory( address ctrHestyIssuance_);
     event                 CreateProperty(uint256 id);
     event           NewReferralSystemCtr(address newSystemCtr);
     event           NewIssuanceContract(address newIssuanceCtr);
@@ -109,28 +104,22 @@ Constants {
     /**
         @dev    Constructor for Token Factory
         @param  fee Investment fee charged by Hesty (in Basis Points)
-        @param  refFee_ Referral Fee charged by referrals (in Basis Points)
         @param  treasury_ The Multi-Signature Address that will receive Hesty fees revenue
         @param  minInvAmount_ Minimum amount a user can invest
         @param  ctrHestyControl_ Contract that manages access to certain functions
     */
     constructor(
         uint256 fee,
-        uint256 refFee_,
         address treasury_,
         uint256 minInvAmount_,
         address ctrHestyControl_
     ){
 
-        require(refFee_ < fee, "Ref fee invalid");
         require(fee < MAX_FEE_POINTS, "Invalid Platform Fee");
 
         platformFeeBasisPoints  = fee;
-        refFeeBasisPoints       = refFee_;
         minInvAmount            = minInvAmount_;
         treasury                = treasury_;
-        maxNumberOfReferrals    = 20;               // Start with max 20 referrals
-        maxAmountOfRefRev       = 10000 * WAD;      // Start with max 10000€ of revenue
         initialized             = false;
         ctrHestyControl         = IHestyAccessControl(ctrHestyControl_);
 
@@ -187,18 +176,16 @@ Constants {
     /**
         @dev    Initialized Token Factory Contract
         @dev    It emits a `InitializeFactory` event.
-        @param  referralSystemCtr_ Referral System Contract that manages referrals rewards
     */
-    function initialize(address referralSystemCtr_,
+    function initialize(
         address ctrHestyIssuance_) external onlyAdmin{
 
         require(!initialized, "Already init");
 
         initialized       = true;
-        referralSystemCtr = IReferral(referralSystemCtr_);
         ctrHestyIssuance = IIssuance(ctrHestyIssuance_);
 
-        emit InitializeFactory(referralSystemCtr_, ctrHestyIssuance_);
+        emit InitializeFactory(ctrHestyIssuance_);
 
     }
 
@@ -272,7 +259,7 @@ Constants {
         uint256 id,
         uint256 amount,
         address ref
-    ) external nonReentrant whenNotAllPaused whenKYCApproved(msg.sender) whenNotBlackListed{
+    ) external nonReentrant whenNotAllPaused whenKYCApproved(msg.sender) whenKYCApproved(onBehalfOf) whenNotBlackListed{
 
         PropertyInfo storage p = property[id];
 
@@ -304,45 +291,10 @@ Constants {
         ownersPlatformFee[id]  += ownersFee;
         propertyOwnerShare[id] += boughtTokensPrice - ownersFee;
 
-        referralRewards(onBehalfOf, ref, boughtTokensPrice, id);
-
         p.raised     += amount;
         property[id] = p;
 
         emit NewInvestment(id, onBehalfOf, amount, boughtTokensPrice, block.timestamp);
-    }
-
-    /**
-@dev    Function that tries to add referral rewards
-        @param  ref user that referenced the buyer
-        @param  boughtTokensPrice Amount invested by buyer
-    */
-    function referralRewards(address onBehalfOf, address ref, uint256 boughtTokensPrice, uint256 id) internal{
-
-        if(ref != address(0)){
-
-            (uint256 userNumberRefs,uint256 userRevenue,) = referralSystemCtr.getReferrerDetails(ref);
-
-            uint256 refFee_ = boughtTokensPrice * refFeeBasisPoints / BASIS_POINTS;
-
-            // maxAmountOfRefRev can be lowered and userevenue may be higher than
-            // maxAmountOfRefRev after that, causing maxAmountOfRefRev - userRevenue to be negative
-            uint256 maxAmountOfLocalRefRev = (maxAmountOfRefRev >= userRevenue ) ? maxAmountOfRefRev : userRevenue;
-
-            refFee_ = (userRevenue + refFee_ > maxAmountOfLocalRefRev) ? maxAmountOfLocalRefRev - userRevenue : refFee_;
-
-            /// @dev maxNumberOfReferral = 20 && maxAmountOfRefRev = €10000
-            if(userNumberRefs < maxNumberOfReferrals && refFee_ > 0){
-
-                // Try to Add Referral rewards but don't stop if it fails
-                try referralSystemCtr.addRewards(ref, onBehalfOf,id, refFee_){
-                    refFee[id] += refFee_;
-
-                }catch{
-
-                }
-            }
-        }
     }
 
 
@@ -491,7 +443,7 @@ Constants {
                 platform multisig
         @param  id Property Id
     */
-    function completeRaise(uint256 id) external onlyAdmin {
+    function completeRaise(uint256 id) external onlyAdmin nonReentrant{
 
         PropertyInfo storage p = property[id];
 
@@ -500,7 +452,7 @@ Constants {
 
         property[id].isCompleted = true;
 
-        SafeERC20.safeTransfer(p.paymentToken, treasury, platformFee[id] - refFee[id]);
+        SafeERC20.safeTransfer(p.paymentToken, treasury, platformFee[id]);
         platformFee[id] = 0;
 
         SafeERC20.safeTransfer(p.paymentToken,treasury,  ownersPlatformFee[id]);
@@ -509,10 +461,6 @@ Constants {
         /// @dev Send property owners their share
         SafeERC20.safeTransfer(p.paymentToken,p.ownerExchAddr, propertyOwnerShare[id]);
         propertyOwnerShare[id] = 0;
-
-        /// @dev fund the referralSystem Contract with property referrals share
-        SafeERC20.safeTransfer(p.paymentToken,address(referralSystemCtr), refFee[id]);
-        refFee[id] = 0;
 
         emit CompleteRaise(id);
     }
@@ -557,7 +505,7 @@ Constants {
     */
     function setPlatformFee(uint256 newFee) external onlyAdmin{
 
-        require(newFee < MAX_FEE_POINTS && newFee > refFeeBasisPoints, "Fee must be valid");
+        require(newFee < MAX_FEE_POINTS, "Fee must be valid");
         platformFeeBasisPoints = newFee;
 
         emit NewPlatformFee(newFee);
@@ -575,19 +523,6 @@ Constants {
         ownersFeeBasisPoints[id] = newFee;
 
         emit NewOwnersFee(id, newFee);
-    }
-
-    /**
-        @dev   Function to change referral fee
-        @dev   Fee must be lower than fee charged by platform
-        @param newFee New referral fee
-    */
-    function setRefFee(uint256 newFee) external onlyAdmin{
-
-        require( newFee < platformFeeBasisPoints, "Fee must be valid");
-        refFeeBasisPoints = newFee;
-
-        emit NewReferralFee(newFee);
     }
 
     /**
@@ -632,27 +567,6 @@ Constants {
         emit NewMinInvestmentAmount(newMinInv);
     }
 
-    /**
-        @dev    Function to set the maximum number of referrals a user can have
-        @param  newMax Maximum number of referrals
-    */
-    function setMaxNumberOfReferrals(uint256 newMax) external onlyAdmin{
-
-        maxNumberOfReferrals = newMax;
-
-        emit NewMaxNReferrals(newMax);
-    }
-
-    /**
-        @dev    Function to set the maximum amount of referral revenue
-        @param  newMax Maximum amount of revenue
-    */
-    function setMaxAmountOfRefRev(uint256 newMax) external onlyAdmin{
-
-        maxAmountOfRefRev = newMax;
-
-        emit NewMaxReferralRevenue(newMax);
-    }
 
     /**
         @dev    Function to set a new treasury address
@@ -667,19 +581,6 @@ Constants {
         emit NewTreasury(newTreasury);
     }
 
-    /**
-        @dev    Function to set a new Referral Management Contract
-        @dev    It emits a `NewReferralSystemCtr` event.
-        @param  newReferralContract The new Referral Management Contract
-
-    */
-    function setReferralContract(address newReferralContract) external onlyAdmin{
-
-        require(newReferralContract != address(0), "Not allowed");
-        referralSystemCtr = IReferral(newReferralContract);
-
-        emit NewReferralSystemCtr(newReferralContract);
-    }
 
     /**
 @dev    Function to set a new Referral Management Contract

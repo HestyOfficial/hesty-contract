@@ -7,11 +7,6 @@
         "type": "uint256"
       },
       {
-        "internalType": "uint256",
-        "name": "refFee_",
-        "type": "uint256"
-      },
-      {
         "internalType": "address",
         "name": "treasury_",
         "type": "address"
@@ -142,12 +137,6 @@
   {
     "anonymous": false,
     "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "referralCtr",
-        "type": "address"
-      },
       {
         "indexed": false,
         "internalType": "address",
@@ -789,11 +778,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "referralSystemCtr_",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "ctrHestyIssuance_",
         "type": "address"
       }
@@ -830,32 +814,6 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "maxAmountOfRefRev",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "maxNumberOfReferrals",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -1076,51 +1034,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "refFee",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "refFeeBasisPoints",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "referralSystemCtr",
-    "outputs": [
-      {
-        "internalType": "contract IReferral",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "oldToken",
         "type": "address"
@@ -1164,32 +1077,6 @@
       }
     ],
     "name": "setIssuanceContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "newMax",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxAmountOfRefRev",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "newMax",
-        "type": "uint256"
-      }
-    ],
-    "name": "setMaxNumberOfReferrals",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1252,32 +1139,6 @@
       }
     ],
     "name": "setPlatformFee",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "newFee",
-        "type": "uint256"
-      }
-    ],
-    "name": "setRefFee",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newReferralContract",
-        "type": "address"
-      }
-    ],
-    "name": "setReferralContract",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

@@ -5,17 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06f565da-713b-4260-86d1-d7cb322b4423" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/contracts/MiddleGround.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contracts/MockERC20.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/approveProperty.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/completeRaise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ClaudeGenerated/TokenFactory.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/MiddleGround.sol" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/TokenFactory.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/TokenFactory.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/AccessControl.sol/AccessControl.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/AccessControl.sol/AccessControl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/AccessControlDefaultAdminRules.sol/AccessControlDefaultAdminRules.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/AccessControlDefaultAdminRules.sol/AccessControlDefaultAdminRules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/AccessControlEnumerable.sol/AccessControlEnumerable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/IAccessControl.sol/IAccessControl.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/IAccessControl.sol/IAccessControl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/IAccessControlDefaultAdminRules.sol/IAccessControlDefaultAdminRules.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/IAccessControlDefaultAdminRules.sol/IAccessControlDefaultAdminRules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/access/IAccessControlEnumerable.sol/IAccessControlEnumerable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/interfaces/IERC5313.sol/IERC5313.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/interfaces/IERC5313.sol/IERC5313.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/security/Pausable.sol/Pausable.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/security/Pausable.sol/Pausable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/IERC20.sol/IERC20.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/IERC20.sol/IERC20.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol/ERC20Burnable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol/ERC20Pausable.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol/ERC20Pausable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol/IERC20Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol/IERC20Metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol/IERC20Permit.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol/IERC20Permit.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol/ERC20PresetMinterPauser.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/utils/introspection/ERC165.sol/ERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/utils/introspection/ERC165.sol/ERC165.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/utils/introspection/IERC165.sol/IERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/@openzeppelin/contracts/utils/introspection/IERC165.sol/IERC165.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/Constants.sol/Constants.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/Constants.sol/Constants.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/HestyAccessControl.sol/HestyAccessControl.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/HestyAccessControl.sol/HestyAccessControl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/HestyAssetIssuance.sol/HestyAssetIssuance.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/HestyAssetIssuance.sol/HestyAssetIssuance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/HestyRouter.sol/HestyRouter.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/HestyRouter.sol/HestyRouter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/PropertyToken.sol/PropertyToken.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/PropertyToken.sol/PropertyToken.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/Referral/ReferralSystem.sol/ReferralSystem.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/Referral/ReferralSystem.sol/ReferralSystem.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/TokenFactory.sol/TokenFactory.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/TokenFactory.sol/TokenFactory.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/interfaces/IHestyAccessControl.sol/IHestyAccessControl.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/interfaces/IHestyAccessControl.sol/IHestyAccessControl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/interfaces/IIssuance.sol/IIssuance.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/interfaces/IIssuance.sol/IIssuance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/interfaces/IReferral.sol/IReferral.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/interfaces/IReferral.sol/IReferral.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/interfaces/IRouter.sol/IRouter.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/interfaces/IRouter.sol/IRouter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/abi/contracts/interfaces/ITokenFactory.sol/ITokenFactory.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/abi/contracts/interfaces/ITokenFactory.sol/ITokenFactory.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/hardhat.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/productionDeploy.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/productionDeploy.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="149" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,33 +74,55 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/@ethersproject/logger/src.ts/index.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/node_modules/hardhat/src/internal/core/providers/http.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2dfZlANHJPmWBhtOXEnFHnRUKUM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/pedro/Documents/GitHub/hesty-contract",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.compile.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\pedro\\AppData\\Local\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pedro/Documents/GitHub/hesty-contract2/artifacts/@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.compile.executor&quot;: &quot;Run&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pedro\Documents\GitHub\hesty-contract2\artifacts\@openzeppelin\contracts\token\ERC20\presets\ERC20PresetMinterPauser.sol" />
+      <recent name="C:\Users\pedro\Documents\GitHub\hesty-contract2\artifacts\@openzeppelin\contracts\token\ERC20" />
+      <recent name="C:\Users\pedro\Documents\GitHub\hesty-contract2\node_modules\@openzeppelin\contracts\token\ERC20" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\pedro\Documents\GitHub\hesty-contract\test\Unit" />
       <recent name="C:\Users\pedro\Documents\GitHub\hesty-contract\contracts\Referral" />
@@ -157,7 +217,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -261,6 +321,21 @@
       <workItem from="1759873976208" duration="546000" />
       <workItem from="1760565696293" duration="2523000" />
       <workItem from="1761287260686" duration="785000" />
+      <workItem from="1772406776355" duration="1355000" />
+      <workItem from="1772663512536" duration="1799000" />
+      <workItem from="1773231229881" duration="1300000" />
+      <workItem from="1773276381291" duration="594000" />
+      <workItem from="1773279308159" duration="593000" />
+      <workItem from="1773328164022" duration="17655000" />
+      <workItem from="1774367796474" duration="592000" />
+      <workItem from="1774725793396" duration="9005000" />
+      <workItem from="1775481130369" duration="2840000" />
+      <workItem from="1775822622823" duration="5914000" />
+      <workItem from="1776268709527" duration="1161000" />
+      <workItem from="1776780430157" duration="594000" />
+      <workItem from="1776868657859" duration="593000" />
+      <workItem from="1776912691031" duration="591000" />
+      <workItem from="1777065155956" duration="4877000" />
     </task>
     <servers />
   </component>
